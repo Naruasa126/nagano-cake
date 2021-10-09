@@ -1,0 +1,57 @@
+<div class="mx-auto col-7 col-sm-10">
+  <div class="col-6 col-sm-5">
+   <div style="padding-top:40px;">
+    <span style="font-size:20px; background-color:#dcdcdc;">
+     会員情報編集
+    </span>
+   </div>
+  </div>
+
+<%= form_with model:@customer, url: public_customer_path(current_customer.id),　local: true do |f| %>
+   <table cellpadding="10">
+    <tr>
+     <th scope="row" width="220">氏名</th>
+     <td width="100"><%= f.text_field :last_name %></td>
+     <td><%= f.text_field :first_name %></td>
+    </tr>
+    <tr>
+     <th scope="row">フリガナ</th>
+     <td  width="100"><%= f.text_field :last_name_kana %></td>
+     <td><%= f.text_field :first_name_kana %></td>
+    </tr>
+     <tr>
+     <th scope="row">郵便番号（ハイフンなし）</th>
+     <td></td>
+     <td colspan="2"><%= f.text_field :postal_code %></td>
+    </tr>
+    <tr>
+     <th scope="row">住所</th>
+     <td></td>
+     <td colspan="3"><%= f.text_field :address, :size=>"50px" %></td>
+     <td></td>
+    </tr>
+    <tr>
+     <th scope="row">電話番号（ハイフンなし）</th>
+     <td></td>
+     <td colspan="2"><%= f.text_field :telephone_number %></td>
+    </tr>
+    <tr>
+     <th scope="row">メールアドレス</th>
+     <td></td>
+     <td width="200" colspan="2"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    </tr>
+   </table>
+
+   <div class="field">
+    <div style="padding-top:30px;">
+     <div class="row">
+      <div class="col-sm-6">
+        <%= f.submit '編集内容を保存する', class: "btn btn-success" %>
+      </div>
+      <div class="col-sm-6">
+        <%= link_to "退会する", public_customers_unsubscribe_path, class: "btn btn-danger" %>
+      </div>
+     </div>
+    </div>
+   </div>
+<% end %>

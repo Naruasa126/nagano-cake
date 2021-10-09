@@ -1,0 +1,123 @@
+
+<div class="mx-auto col-7 col-sm-10">
+  <div class="col-6 col-sm-5">
+   <div style="padding-top:40px;">
+    <span style="font-size:20px; background-color:#dcdcdc;">
+     <%= @customers.full_name %>さんの会員詳細
+    </span>
+   </div>
+  </div>
+
+  <div class="col-7">
+<!---->
+    <div class="field">
+     <div style="padding-top:30px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-left">会員ID</p>
+        <div class="col-sm-6">
+         <%= @customers.id  %>
+        </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-left">氏名</p>
+        <div class="col-sm-8">
+         <%= @customers.last_name %> <%= @customers.first_name %>
+        </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-left">フリガナ</p>
+       <div class="col-sm-6">
+        <%= @customers.last_name_kana %>   <%= @customers.first_name_kana %>
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-left">郵便番号</p>
+       <div class="col-sm-6">
+        <%= @customers.postal_code %>
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-left">住所</p>
+       <div class="col-sm-6">
+        <%= @customers.address %>
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-left">電話番号</p>
+       <div class="col-sm-6">
+        <%= @customers.telephone_number %>
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-left">メールアドレス</p>
+       <div class="col-sm-6">
+        <%= @customers.email %>
+       </div>
+      </div>
+     </div>
+    </div>
+
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-left">会員ステータス</p>
+       <div class="col-sm-6">
+       <% if @customers.is_active == true %>
+        <p class= "text-success">有効</p>
+       <% else %>
+        <p>退会</p>
+       <% end %>
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="actions">
+     <div class="col-sm-10 text-center">
+      <div class="row">
+       <div>
+        <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %>
+       </div>
+       <div class="col-5 offset-1">
+        <%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-primary" %>
+       </div>
+       </div>
+      </div>
+     </div>
+    </div>
+
+   </div>
+  </div>
+ </div>
+</div>

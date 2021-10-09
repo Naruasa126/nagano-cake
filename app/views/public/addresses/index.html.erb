@@ -1,0 +1,74 @@
+<div class="mx-auto col-7 col-sm-10">
+  <div class="col-6 col-sm-5">
+   <div style="padding-top:20px;">
+    <span style="font-size:20px; background-color:#dcdcdc;">
+     配送先登録/一覧
+    </span>
+   </div>
+  </div>
+
+  <%= form_with model:@addresses, url: public_addresses_path(current_customer), local: true do |f| %>
+  <div class="mx-auto col-10 col-sm-10 ">
+   <div class="field">
+    <div style="padding-top:20px;">
+     <div class="row">
+      <p class="col-4 col-sm-4 text-left">郵便番号（ハイフンなし）</p>
+      <div class="col-sm-6">
+       <%= f.text_field :postal_code, placeholder: "0000000" %>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="field">
+    <div style="padding-top:10px;">
+     <div class="row">
+      <p class="col-4 col-sm-4 text-left">住所</p>
+      <div class="col-sm-6">
+       <%= f.text_field :address, :size=>"50px", placeholder: "東京都渋谷区代々木神園町0－0" %>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="field">
+    <div style="padding-top:10px;">
+     <div class="row">
+      <p class="col-4 col-sm-4 text-left">宛名</p>
+      <div class="col-sm-4">
+       <%= f.text_field :name, placeholder: "令和道子" %>
+      </div>
+      <div class="col-4" >
+       <%= f.submit '新規登録', class: "btn btn-success" %>
+      </div>
+     </div>
+    </div>
+   </div>
+   <% end %>
+
+     <div class="form-group">
+      <div style="padding-top:20px;">
+      <table class="table">
+       <thaed style="background-color:#c0c0c0;">
+         <th>郵便番号</th>
+         <th>住所</th>
+         <th>宛名</th>
+         <th></th>
+       </thaed>
+       <tbody>
+        <% @addresses.each do |address| %>
+         <tr>
+          <td><%= address.postal_code %></td>
+          <td><%= address.address %></td>
+          <td><%= address.name%></td>
+          <td>
+            <%= link_to "編集する", edit_public_address_path(address.id), class: "btn btn-success" %>
+            <%= link_to '削除する', public_address_path(address.id), method: :delete, class: "btn btn-danger" %>
+          </td>
+         </tr>
+        <% end %>
+       </tbody>
+      </table>
+      </div>
+     </div>
+    </div>
+  </div>
+

@@ -1,0 +1,35 @@
+<div class="mx-auto col-7 col-sm-10">
+  <div class="col-6 col-sm-5">
+   <div style="padding-top:40px;">
+    <span style="font-size:20px; background-color:#dcdcdc;">
+     配送先編集
+    </span>
+   </div>
+  </div>
+
+
+  <div class="mx-auto col-10 col-sm-10 ">
+    <div class="form-group">
+    <%= form_with model:@addresses, url: public_address_path(@addresses), local: true do |f| %>
+     <table cellpadding="10">
+       <tr>
+         <th scope="row">郵便番号（ハイフンなし）</th>
+         <td></td>
+         <td colspan="2"><%= f.text_field :postal_code %></td>
+       </tr>
+       <tr>
+        <th scope="row">住所</th>
+        <td></td>
+        <td colspan="3"><%= f.text_field :address, :size=>"50px" %></td>
+        <td></td>
+       </tr>
+       <tr>
+         <th scope="row">宛名</th>
+         <td></td>
+         <td colspan="2"><%= f.text_field :name %></td>
+         <td colspan="4"><%= f.submit '変更内容を保存', class: "btn btn-success" %></td>
+       </tr>
+     </table>
+    <% end %>
+  </div>
+</div>

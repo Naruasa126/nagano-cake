@@ -1,0 +1,65 @@
+<div class="mx-auto col-7 col-sm-10">
+  <div class="col-6 col-sm-5">
+   <div style="padding-top:20px;">
+    <span style="font-size:20px; background-color:#dcdcdc;">
+     マイページ
+    </span>
+   </div>
+  </div>
+
+   <div class="field">
+    <div style="padding-top:10px;">
+     <div class="row">
+       <p class="col-2 text-right" style="font-size:18px;">登録情報</p>
+      <div class="col-sm-5 offset-1">
+       <%= link_to "編集する", edit_public_customer_path(current_customer), class: "btn btn-success" %>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <div class="col-8">
+    <table class="table" style="border:solid 2px #aaaaaa; font-size:16px;">
+     <tr style="border:solid 2px #aaaaaa;">
+      <th width="200"  style="background-color:#dcdcdc;">氏名</th>
+      <td><%= current_customer.full_name %></td>
+     </tr>
+     <tr style="border:solid 2px #aaaaaa;">
+       <th style="background-color:#dcdcdc;">フリガナ</th>
+       <td><%= @customer.full_name_kana %></td>
+     </tr>
+     <tr style="border:solid 2px #aaaaaa;">
+       <th style="background-color:#dcdcdc;">郵便番号</th>
+       <td><%= @customer.postal_code %></td>
+     </tr>
+     <tr style="border:solid 2px #aaaaaa;">
+       <th style="background-color:#dcdcdc;">住所</th>
+       <td><%= @customer.address %></td>
+     </tr style="border:solid 2px #aaaaaa;">
+     <tr style="border:solid 2px #aaaaaa;">
+       <th style="background-color:#dcdcdc;">電話番号</th>
+       <td><%= @customer.telephone_number %></td>
+     </tr>
+     <tr style="border:solid 2px #aaaaaa;">
+       <th style="background-color:#dcdcdc;">メールアドレス</th>
+       <td><%= @customer.email %></td>
+     </tr>
+    </table>
+   </div>
+
+   <div class="field">
+    <div style="padding-top:10px;">
+     <div class="">
+      <span>配送先</span>
+      <div class="">
+        <%= link_to "一覧を見る", public_addresses_path, class: "btn btn-primary" %>
+      </div>
+     </div>
+     <div class="">
+      <span>注文履歴</span>
+      <div class="">
+        <%= link_to "一覧を見る", public_orders_path, class: "btn btn-primary" %>
+      </div>
+     </div>
+    </div>
+   </div>

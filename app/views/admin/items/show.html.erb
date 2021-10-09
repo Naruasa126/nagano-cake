@@ -1,0 +1,93 @@
+
+<div class="mx-auto col-7 col-sm-10">
+  <div class="col-6 col-sm-5">
+   <div style="padding-top:40px;">
+    <span style="font-size:20px; background-color:#dcdcdc;">
+     商品詳細
+    </span>
+   </div>
+  </div>
+
+ <div class="row">
+   <div class="col-3 col-sm-3 ">
+    <div style="padding-top:30px;">
+     <%= attachment_image_tag @items, :image, size:"350x250" %>
+    </div>
+   </div>
+
+   <div class="col-7 offset-1 ">
+
+    <div class="field">
+     <div style="padding-top:30px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-right">商品名</p>
+        <div class="col-sm-6">
+         <%= @items.name  %>
+        </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-right">商品説明</p>
+        <div class="col-sm-8">
+         <%= @items.introduction %>
+        </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-right">ジャンル</p>
+       <div class="col-sm-6">
+        <%= @items.genre.name %>
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <div class="col-3 col-sm-3 text-right">
+        <p>税込価格</p>
+        <p>(税抜価格)</p>
+       </div>
+       <div class="col-sm-6 align-self-center">
+        <%= @items.price %>（<%= @items.tax_price %>）円
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="field">
+     <div style="padding-top:10px;">
+      <div class="row">
+       <p class="col-3 col-sm-3 text-right">販売ステータス</p>
+       <div class="col-sm-6">
+       <% if @items.sales_status == true %>
+        <p>販売中</p>
+       <% else %>
+        <p>販売停止中</p>
+       <% end %>
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="actions">
+     <div class="col-sm-7 text-center">
+      <div style="padding-top:40px;">
+       <%= link_to "編集する", edit_admin_item_path, class: "btn btn-success" %>
+      </div>
+     </div>
+    </div>
+
+   </div>
+  </div>
+ </div>
+</div>

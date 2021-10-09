@@ -1,0 +1,40 @@
+<div class="mx-auto col-7 col-sm-10">
+  <div class="col-6 col-sm-5">
+   <div style="padding-top:40px;">
+    <span style="font-size:20px; background-color:#dcdcdc;">
+     注文履歴一覧
+    </span>
+   </div>
+  </div>
+
+  <div class="field">
+    <table class="table">
+      <thaed style="background-color:#dcdcdc;">
+        <tr>
+          <th>注文日</th>
+          <th>配送先</th>
+          <th>注文商品</th>
+          <th>支払金額</th>
+          <th>ステータス</th>
+          <th>注文詳細</th>
+        </tr>
+      </thaed>
+      <tbody>
+       <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+          <td><%= order.full_address %></td>
+          <td>
+            <% order.order_details.each do |order_detail| %>
+             <p style="word-wrap: break-word;"><%= order_detail.item.name %></p>
+            <% end %>
+          </td>
+          <td><%= order.total_payment %></td>
+          <td><%= Order.statuses_i18n[order.status] %></td>
+          <td><%= link_to '表示する', public_order_path(order.id), class: "btn btn-primary" %></td>
+        </tr>
+       <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

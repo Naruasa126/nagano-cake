@@ -1,0 +1,83 @@
+<div class="mx-auto col-7 col-sm-10">
+  <div class="col-6 col-sm-5">
+   <div style="padding-top:20px;">
+    <span style="font-size:20px; background-color:#dcdcdc;">
+     注文履歴詳細
+    </span>
+   </div>
+  </div>
+
+  <div class="row">
+   <div class="col-6">
+     <div style="padding-top:10px;">
+      <span style="font-size:20px;">注文情報</span>
+      <table class="table" style="border:solid 2px #aaaaaa; font-size:16px;">
+       <tr style="border:solid 2px #aaaaaa;">
+         <th scope="row" style="background-color:#dcdcdc;">注文日</th>
+         <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+       </tr>
+       <tr style="border:solid 2px #aaaaaa;">
+         <th scope="row" style="background-color:#dcdcdc;">配送先</th>
+         <td>
+           <p><%= @order.full_address %></p>
+         </td>
+       </tr>
+       <tr style="border:solid 2px #aaaaaa;">
+         <th scope="row" style="background-color:#dcdcdc;">支払方法</th>
+         <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
+       </tr>
+       <tr style="border:solid 2px #aaaaaa;">
+         <th scope="row" style="background-color:#dcdcdc;">ステータス</th>
+         <td><%= Order.statuses_i18n[@order.status] %></td>
+       </tr>
+      </table>
+     </div>
+   </div>
+
+   <div class="col-3">
+     <div style="padding-top:10px;">
+      <span style="font-size:20px;">請求情報</span>
+      <table class="table" style="border:solid 2px #aaaaaa; font-size:16px;">
+       <tr style="border:solid 2px #aaaaaa;">
+         <th style="background-color:#dcdcdc;">商品合計</th>
+         <td>
+          <% @order.order_details.each do |order_detail| %>
+           <% @order_sum = 0 %>
+           <% @order_sum += order_detail.item.tax_price * order_detail.amount %>
+          <% end %>
+          <%= @order_sum %></td>
+       </tr>
+       <tr style="border:solid 2px #aaaaaa;">
+         <th style="background-color:#dcdcdc;">配送料</th>
+         <td><%= @order.shipping_cost %></td>
+       </tr>
+       <tr style="border:solid 2px #aaaaaa;">
+         <th style="background-color:#dcdcdc;">ご請求額</th>
+         <td><%= @order.total_payment %></td>
+       </tr>
+      </table>
+     </div>
+   </div>
+  </div>
+
+  <div class="col-11">
+   <table class="table">
+    <thaed style="background-color:#dcdcdc;">
+     <th>商品商品</th>
+     <th>単価（税込）</th>
+     <th>個数</th>
+     <th>小計</th>
+    </thaed>
+    <tbody>
+    <% @order.order_details.each do |order_detail| %>
+     <tr>
+      <td><%= order_detail.item.name %></td>
+      <td><%= order_detail.item.tax_price %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= order_detail.item.tax_price * order_detail.amount %></td>
+     </tr>
+    <% end %>
+    </tbody>
+   </table>
+  </div>
+</div>

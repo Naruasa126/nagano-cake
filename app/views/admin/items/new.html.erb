@@ -1,0 +1,82 @@
+<div class="mx-auto col-7 col-sm-10">
+  <div class="col-6 col-sm-5 text-right">
+   <div style="padding-top:25px;">
+    <span style="font-size:20px; background-color:#dcdcdc;">
+     商品新規登録
+    </span>
+   </div>
+  </div>
+
+   <%= form_with model:@item, url: admin_items_path, local: true do |f| %>
+   <div class="field">
+    <div style="padding-top:25px;">
+     <div class="row">
+      <p class="col-6 col-sm-5 text-right">商品画像</p>
+      <div class="col-sm-6">
+       <%= f.attachment_field :image %>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="field">
+    <div style="padding-top:10px;">
+     <div class="row">
+      <p class="col-6 col-sm-5 text-right">商品名</p>
+      <div class="col-sm-6">
+       <%= f.text_field :name, placeholder:"商品名" %>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="field">
+    <div style="padding-top:10px;">
+     <div class="row">
+      <p class="col-6 col-sm-5 text-right">商品説明</p>
+      <div class="col-sm-6">
+       <%= f.text_area :introduction, :size=>"25x4",　placeholder:"ここに説明分を記述します。" %>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="field">
+    <div style="padding-top:10px;">
+     <div class="row">
+      <p class="col-6 col-sm-5 text-right">ジャンル</p>
+      <div class="col-sm-6">
+       <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="field">
+    <div style="padding-top:10px;">
+     <div class="row">
+      <p class="col-6 col-sm-5 text-right">税抜価格</p>
+      <div class="col-sm-6">
+       <%= f.text_field :price, placeholder:"1,000" %>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="field">
+    <div style="padding-top:10px;">
+     <div class="row">
+      <p class="col-6 col-sm-5 text-right">販売ステータス</p>
+      <div class="col-sm-6">
+       <%= f.radio_button :sales_status, true %>
+       <%= f.label :sales_status_on_sale, '販売中' %>
+       <%= f.radio_button :sales_status, false %>
+       <%= f.label :sales_status_draft, '販売停止中' %>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="actions">
+   <div class="col-sm-7 text-right">
+    <div style="padding-top:20px;">
+    <%= f.submit "新規登録", class: "btn btn-success" %>
+    </div>
+   </div>
+  </div>
+   <% end %>
+</div>

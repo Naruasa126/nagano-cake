@@ -1,0 +1,25 @@
+# ja.yml
+ja:
+  enums:
+    order:
+      payment_method:
+        credit_card: 'クレジットカード'
+        transfer: '銀行振込'
+
+      status:
+        waiting_pay: '入金待ち'
+        pay_complete: '入金確認'
+        production: '制作中'
+        prepar_wait: '発送待ち'
+        sent: '発送済み'
+
+    order_detail:
+      making_status:
+        not_produce: '制作不可'
+        wait_production: '制作待ち'
+        production: '制作中'
+        complete: '制作完了'
+
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"

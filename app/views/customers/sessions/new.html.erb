@@ -1,0 +1,65 @@
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+ <div class="mx-auto col-7 col-sm-15">
+  <div class="container">
+   <div style="padding-top:25px;">
+    <span style="font-size:24px; background-color:#dcdcdc;">
+     ログイン
+    </span>
+   </div>
+
+   <div class="mx-auto col-sm-12 container">
+    <div style="padding-top:25px;">
+     <span style="font-size:18px; background-color:#dcdcdc;">
+      会員の方はこちらからログイン
+     </span>
+    </div>
+   </div>
+
+  <div class="field">
+   <div style="padding-top:20px;">
+   <div class="row">
+    <p class="col-6 col-sm-5 text-right">メールアドレス</p>
+    <div class="col-sm-6">
+     <%= f.email_field :email, :size=>"30px", autofocus: true, autocomplete: "email" %>
+    </div>
+   </div>
+   </div>
+  </div>
+
+  <div class="field">
+   <div style="padding-top:20px;">
+   <div class="row">
+    <p class="col-6 col-sm-5 text-right">パスワード</p>
+    <div class="col-sm-6">
+     <%= f.password_field :password, :size=>"30px", autocomplete: "current-password" %>
+    </div>
+   </div>
+   </div>
+  </div>
+  <div class="actions">
+   <div class="col-sm-7 text-right">
+    <div style="padding-top:20px;">
+    <%= f.submit "ログイン", class: "btn btn-success" %>
+    </div>
+   </div>
+  </div>
+
+  <div class="mx-auto col-sm-12 container">
+    <div style="padding-top:25px;">
+     <span style="font-size:18px; background-color:#dcdcdc;">
+      会員登録がお済でない方
+     </span>
+    </div>
+  </div>
+   <div class="col-10 col-sm-10 text-center">
+    <div style="padding-top:25px;">
+     <p>
+      <%= link_to new_customer_registration_path do %>こちら<% end %>
+      から新規登録を行ってください。</p>
+   </div>
+
+<% end %>
+ </div>
+</div>
